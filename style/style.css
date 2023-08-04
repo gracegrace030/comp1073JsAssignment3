@@ -3,6 +3,7 @@
 
 :root{
     font-size: 18px;
+    --pacman-size : 40px;
 }
 
 body, input{
@@ -43,7 +44,7 @@ header h1{
 }
 
 input{
-    height: calc(1.5rem + 1lh);
+    height: calc(1.5rem + 1rem);
     font-size: 1rem;
     padding: 0 0.8rem;
     border: 0;
@@ -83,7 +84,7 @@ input[type="checkbox"]{
 
 .btnSolid{
     text-transform: uppercase;
-    padding: calc(0.5lh + 0.5rem) 1rem;  
+    padding: calc(0.5rem + 0.5rem) 1rem;  
     border-radius: 0.2rem;
     background-color: #CAB4D9;
 }
@@ -131,7 +132,7 @@ main{
     justify-content: flex-start;
     align-items: center;
     
-    padding: 1lh 0;
+    padding: 1rem 0;
     border-bottom: 3px dotted #CAB4D9;
     position: relative;
     overflow: hidden;
@@ -222,7 +223,7 @@ main{
     animation: moveBG 1.4s 0.2s ease-out;
 
     position: absolute;
-    top: 1lh;
+    top: 1rem;
     left: 0;
     right: 0;
     bottom: 0;
