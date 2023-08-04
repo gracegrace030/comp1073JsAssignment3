@@ -123,7 +123,7 @@ main{
     display: inline-block;
     margin-top: 20px;
     padding: 20px;
-    min-width: max(30vw, 400px);
+    min-width: max(30vw, 500px);
 }
 
 #to-do-list li, #completed-list li{
