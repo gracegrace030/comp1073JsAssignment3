@@ -5,7 +5,7 @@
     font-size: 18px;
 }
 
-body, button, input{
+body, input{
     font-family: 'Share Tech Mono', monospace;
 }
 
@@ -15,12 +15,31 @@ body, button{
     background-color: #F2E2DC;
 }
 
-h1, button{
+h1, .subtitle, button{
     font-family: 'Bungee', cursive; 
 }
 
 h1{
     font-size: 3.5rem;
+}
+
+header{
+    margin-top: 5vh;
+    transition: margin-top 1s;
+}
+
+.header-down{
+    margin-top: 35vh;
+}
+
+header h1{
+    margin-top: 0;
+}
+
+.subtitle{
+    font-size: 1.5rem;
+    word-spacing: 1rem;
+    letter-spacing: 0.3rem;
 }
 
 input{
@@ -37,6 +56,7 @@ button{
     border: 0;
 
     text-decoration: none;
+    transition: all 0.3s;
 }
 
 input[type="checkbox"]{
@@ -59,10 +79,35 @@ input[type="checkbox"]{
     background-color: #CAB4D9;
 }
 
+.btnSolid:hover{
+    background-color: #F2A413;
+    
+}
+
+button:hover{
+    color: #000;
+}
+
+button:active{
+    transform: scale(0.85);
+}
+
 main{
     display: flex;
     flex-direction: column;
-    min-height: 80vh;
+}
+
+.main-height{
+    min-height: 50vh;
+}
+
+#to-do-task-wrapper{
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    justify-content: center;
+    align-items: center;
+    font-size: 1rem;
 }
 
 #to-do-list ul, #completed-list ul{
@@ -99,6 +144,7 @@ main{
 }
 
 /* Pac man effect */
+/* Reference: https://dev.to/alvaromontoro/creating-an-animated-pacman-pattern-40c */
 .pac-man-wrapper{
     position: absolute;
     width: 100%;
@@ -257,5 +303,19 @@ main{
 @media only screen and (max-width: 768px) {
     :root{
         font-size: 16px;
+    }
+    
+    input{
+        text-align: center;
+    }
+
+    #to-do-task-wrapper{
+        flex-direction: column;
+        align-items: stretch;
+        padding: 10vw;
+    }
+
+    #to-do-list ul, #completed-list ul{
+        min-width: 80vw;
     }
 }
