@@ -13,12 +13,131 @@ body{
 #to-do-list li{
     display: flex;
     justify-content: space-between;
+    align-items: center;
     
-    padding: 10px 0;
-    margin-bottom: 5px;
+    padding: 1lh 0;
     border-bottom: 1px solid;
+    position: relative;
+    overflow: hidden;
 }
 
 #to-do-list button{
     margin-left: 50px;
+}
+
+/* Pac man effect */
+.pac-man-wrapper{
+    position: absolute;
+    width: 100%;
+    top: 0;
+    left: 0;
+}
+.pac-man{
+
+    animation: move 1s 1s ease-out, eating 1s 1s ease-out;
+    position: absolute;
+    /* ((text + padding) - hieight of pac man) / 2 */
+    top: calc(((1lh + 2lh) - 32px) / 2);
+    left: -32px;
+    right: 0;
+    bottom: 0;
+    
+    width: 32px;
+    height: 32px;
+    background: conic-gradient(#c8c800 55deg, transparent 0 125deg, #c8c800 0);
+    border-radius: 50%;
+
+    /* width: 100%; */
+    /* background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' height='571.11' width='541.6'%3E%3Cpath style='fill:%23ffcc00' d='M535.441,412.339A280.868,280.868 0 1,1 536.186,161.733L284.493,286.29Z'/%3E%3C/svg%3E"); */
+    /* background-size: 22px; */
+    /* background-repeat: no-repeat; */
+    /* background-position: calc(0% - 22px) 0%; */
+
+    /* animation: eating 1s 1s ease-out;
+    left: 50px; */
+}
+
+.pac-man::before{
+    content: ' ';
+    animation: chips 1s 1s linear;
+
+    display: block;
+    position: absolute;
+    right: -32px;
+    top: 0;
+    width: 32px;
+    height: 32px;
+    transform: rotate(45deg);
+    background-image: radial-gradient(#000 30%, transparent 0);
+    background-size: 10px 10px;
+    background-repeat: repeat;
+    clip-path: polygon(0 0, 0 100%, 100% 100%, 0% 100%);
+}
+
+.pac-man::after{
+    content: ' ';
+    display: block;
+    box-sizing: border-box;
+    width: 10px;
+    height: 10px;
+    margin-left: 5px;
+    margin-top: 6px;
+    border: 3px solid #fff;
+    background-color: #000;
+    border-radius: 50%;
+}
+
+.pac-man-bg{
+    content: ' ';
+    animation: moveBG 1s 1s ease-out;
+
+    position: absolute;
+    top: 1lh;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 0%;
+    height: 32px;
+    
+    background-color: #fff;
+    /* background-position: 0% 0%; */
+}
+
+/* @keyframes move{
+    100% {
+        background-position: calc(100% + 22px) 0%;
+    }
+} */
+
+@keyframes move{
+    100% {
+        left: 100%;
+    }
+}
+
+@keyframes moveBG{
+    100% {
+        width: calc(100% + 32px / 2);
+    }
+}
+
+@keyframes eating{
+    0%, 30%, 60%, 90%{
+        background: conic-gradient(#c8c800 75deg, transparent 0 100deg, #c8c800 0);
+    }
+
+    15%, 45%, 75%, 100%{
+        background: conic-gradient(#c8c800 55deg, transparent 0 125deg, #c8c800 0);
+    }
+}
+
+@keyframes chips{
+
+    0%, 30%, 60%, 90%{
+        clip-path: polygon(0 0, 0 100%, 100% 100%, 0% 100%);
+    }
+
+    15%, 45%, 75%, 100%{
+        clip-path: polygon(0 0, 60% 30%, 100% 100%, 0% 100%);
+    }
 }
