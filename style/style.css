@@ -72,6 +72,15 @@ input[type="checkbox"]{
     transform: translateY(-0.075rem);
 }
 
+.buttons-set{
+    display: flex;
+    gap: 0.5rem;
+}
+
+.buttons-set :last-child{
+    flex: auto;
+}
+
 .btnSolid{
     text-transform: uppercase;
     padding: calc(0.5lh + 0.5rem) 1rem;  
@@ -312,7 +321,7 @@ main{
     #to-do-task-wrapper{
         flex-direction: column;
         align-items: stretch;
-        padding: 10vw;
+        padding: 5vw 10vw;
     }
 
     #to-do-list ul, #completed-list ul{

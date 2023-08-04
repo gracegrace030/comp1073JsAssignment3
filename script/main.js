@@ -8,9 +8,12 @@ const soundDelete = document.getElementById("sound-delete");
 const header = document.querySelector("header");
 const main = document.querySelector("main");
 const btnAddItem = document.getElementById("btn-add-item");
+const btnRandomItem = document.getElementById("btn-random-item");
 const inputItem = document.getElementById("input-item");
 const toDoList = document.querySelector("#to-do-list ul");
 const completeList = document.querySelector("#completed-list ul");
+
+const randomFoodList = ["Apple", "Pizza", "Pumpkins", "Chipotle Peppers", "Hazelnuts", "Ketchup"];
 
 btnAddItem.addEventListener("click", newListItem);
 inputItem.addEventListener("keypress",(e)=>{
@@ -19,6 +22,20 @@ inputItem.addEventListener("keypress",(e)=>{
     btnAddItem.click();
   }
 })
+
+btnRandomItem.addEventListener("click", fillRandomFood);
+
+// Random Food ----------------------------------
+
+function genRandomFood(){
+  const randNum = Math.floor(Math.random() * randomFoodList.length);
+  return randomFoodList[randNum];
+}
+
+function fillRandomFood(){
+  inputItem.value = genRandomFood();
+}
+
 
 // New List Item Function ----------------------------------
 
@@ -38,7 +55,7 @@ function newListItem(){
     let checkbox = document.createElement("input");
     checkbox.setAttribute("type", "checkbox")
     li.appendChild(checkbox);
-    checkbox.addEventListener("click", (e)=>{
+    checkbox.addEventListener("change", (e)=>{
       if (e.target.checked){
         // Replay sound if sound is playing
         soundEating.load();
@@ -90,6 +107,7 @@ function newListItem(){
     inputItem.focus();
   }
 }
+
 
 // Pac Man Effect ----------------------------------
 function pacMan(e){
