@@ -1,6 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bungee&display=swap');
+
 body{
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-family: 'Share Tech Mono', monospace;
     text-align: center;
+}
+
+h1{
+    font-family: 'Bungee', cursive; 
+    font-size: 3.5rem;
 }
 
 #to-do-list ul, #completed-list ul{
