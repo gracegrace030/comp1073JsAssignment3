@@ -3,25 +3,32 @@ body{
     text-align: center;
 }
 
-#to-do-list ul{
+#to-do-list ul, #completed-list ul{
     display: inline-block;
     margin-top: 20px;
     padding: 20px;
     min-width: 290px;
 }
 
-#to-do-list li{
+#to-do-list li, #completed-list li{
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-items: center;
     
     padding: 1lh 0;
     border-bottom: 1px solid;
     position: relative;
     overflow: hidden;
+
 }
 
-#to-do-list button{
+#to-do-list li > span, #completed-list li > span{
+    flex: 1;
+    text-align: left;
+    margin-left: 10px;
+}
+
+#to-do-list button, #completed-list button{
     margin-left: 50px;
 }
 
@@ -34,7 +41,7 @@ body{
 }
 .pac-man{
 
-    animation: move 1s 1s ease-out, eating 1s 1s ease-out;
+    animation: move 1.4s 0.2s ease-out, eating 1.4s 0.2s ease-out;
     position: absolute;
     /* ((text + padding) - hieight of pac man) / 2 */
     top: calc(((1lh + 2lh) - 32px) / 2);
@@ -59,7 +66,7 @@ body{
 
 .pac-man::before{
     content: ' ';
-    animation: chips 1s 1s linear;
+    animation: chips 1.4s 0.2s ease-out;
 
     display: block;
     position: absolute;
@@ -89,7 +96,7 @@ body{
 
 .pac-man-bg{
     content: ' ';
-    animation: moveBG 1s 1s ease-out;
+    animation: moveBG 1.4s 0.2s ease-out;
 
     position: absolute;
     top: 1lh;
@@ -110,34 +117,66 @@ body{
 } */
 
 @keyframes move{
-    100% {
+    0%, 5%{
+        left: calc(0% - 32px);
+    }
+    
+    10%, 25%{
+        left: 10%;
+    }
+
+    30%, 50%{
+        left: 50%;
+    }
+
+    55%, 75%{
+        left: 75%;
+    }
+
+    80%, 100%{
         left: 100%;
     }
 }
 
 @keyframes moveBG{
-    100% {
+    0%, 5%{
+        width: calc(0% + 32px / 2);
+    }
+    
+    10%, 25%{
+        width: calc(10% + 32px / 2);
+    }
+
+    30%, 50%{
+        width: calc(50% + 32px / 2);
+    }
+
+    55%, 75%{
+        width: calc(75% + 32px / 2);
+    }
+    
+    80%, 100%{
         width: calc(100% + 32px / 2);
     }
 }
 
 @keyframes eating{
-    0%, 30%, 60%, 90%{
+    0%, 30%, 80%, 100%{
         background: conic-gradient(#c8c800 75deg, transparent 0 100deg, #c8c800 0);
     }
 
-    15%, 45%, 75%, 100%{
+    25%, 75%{
         background: conic-gradient(#c8c800 55deg, transparent 0 125deg, #c8c800 0);
     }
 }
 
 @keyframes chips{
 
-    0%, 30%, 60%, 90%{
+    0%, 50%, 80%{
         clip-path: polygon(0 0, 0 100%, 100% 100%, 0% 100%);
     }
 
-    15%, 45%, 75%, 100%{
+    25%, 75%{
         clip-path: polygon(0 0, 60% 30%, 100% 100%, 0% 100%);
     }
 }

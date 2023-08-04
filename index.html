@@ -6,6 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style/style.css">
     <script src="./script/main.js" defer></script>
+    <audio id="sound-eating" preload="auto">
+        <source src="./Voicy_Eating_sound_effect.mp3" type="audio/mpeg">
+    </audio>
 
     <title>To-Do-List</title>
 </head>
@@ -15,30 +18,16 @@
     </header>
     <main>
         <section id="to-do-task-wrapper">
-            <label for="newItem">Enter a task:</label>
+            <label>Enter a task:</label>
             <input type="text" id="input-item">
             <button type="submit" id="btn-add-item">Add</button>
         </section>
 
         <section id="to-do-list">
-            <ul>
-                <li>
-                    <div class="pac-man-wrapper">
-                        <div class="pac-man-bg"></div>
-                        <div class="pac-man"></div>
-                    </div>
-                    <span>Task 1</span>
-                    <button>Delete</button>
-                </li>
-                <li>
-                    <div class="pac-man-wrapper">
-                        <div class="pac-man-bg"></div>
-                        <div class="pac-man"></div>
-                    </div>
-                    <span>Task 2</span>
-                    <button>Delete</button>
-                </li>
-            </ul>
+            <ul></ul>
+        </section>
+        <section id="completed-list">
+            <ul></ul>
         </section>
     </main>
 
