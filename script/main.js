@@ -27,11 +27,13 @@ btnAddItem.addEventListener("click", () => {
         setTimeout(()=>{
           // List item be moved to bottom
           removePacMan(e);
+          li.classList.toggle("strikethrough");
           completeList.appendChild(li);
         },1600);
 
       }
       else {
+        li.classList.toggle("strikethrough");
         toDoList.appendChild(li);
       }
     });
