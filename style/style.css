@@ -3,9 +3,10 @@
 
 :root{
     font-size: 18px;
+    --pacman-size : 55px;
 }
 
-body, button, input{
+body, input{
     font-family: 'Share Tech Mono', monospace;
 }
 
@@ -15,7 +16,7 @@ body, button{
     background-color: #F2E2DC;
 }
 
-h1, button{
+h1, .subtitle, button{
     font-family: 'Bungee', cursive; 
 }
 
@@ -23,11 +24,36 @@ h1{
     font-size: 3.5rem;
 }
 
+header{
+    margin-top: 5vh;
+    transition: margin-top 1s;
+}
+
+.header-down{
+    margin-top: 35vh;
+}
+
+header h1{
+    margin-top: 0;
+}
+
+.subtitle{
+    font-size: 1.5rem;
+    word-spacing: 1rem;
+    letter-spacing: 0.3rem;
+}
+
 input{
-    height: calc(1.5rem + 1lh);
+    height: calc(1.5rem + 1rem);
     font-size: 1rem;
     padding: 0 0.8rem;
     border: 0;
+
+    transition: all 0.3s;
+}
+
+.yellow{
+    color: #F2A413;
 }
 
 button{
@@ -37,6 +63,7 @@ button{
     border: 0;
 
     text-decoration: none;
+    transition: all 0.3s;
 }
 
 input[type="checkbox"]{
@@ -52,17 +79,42 @@ input[type="checkbox"]{
     transform: translateY(-0.075rem);
 }
 
+.buttons-set{
+    display: flex;
+    gap: 0.5rem;
+}
+
+.buttons-set :last-child{
+    flex: auto;
+}
+
 .btnSolid{
     text-transform: uppercase;
-    padding: calc(0.5lh + 0.5rem) 1rem;  
+    padding: calc(0.5rem + 0.5rem) 1rem;  
     border-radius: 0.2rem;
     background-color: #CAB4D9;
+}
+
+.btnSolid:hover{
+    background-color: #F2A413;
+    
+}
+
+button:hover{
+    color: #000;
+}
+
+button:active{
+    transform: scale(0.85);
 }
 
 main{
     display: flex;
     flex-direction: column;
-    min-height: 80vh;
+}
+
+.main-height{
+    min-height: 50vh;
 }
 
 #to-do-task-wrapper{
@@ -71,13 +123,14 @@ main{
     gap: 1rem;
     justify-content: center;
     align-items: center;
+    font-size: 1rem;
 }
 
 #to-do-list ul, #completed-list ul{
     display: inline-block;
     margin-top: 20px;
     padding: 20px;
-    min-width: max(30vw, 400px);
+    min-width: max(30vw, 500px);
 }
 
 #to-do-list li, #completed-list li{
@@ -85,11 +138,12 @@ main{
     justify-content: flex-start;
     align-items: center;
     
-    padding: 1lh 0;
+    padding: 1rem 0;
     border-bottom: 3px dotted #CAB4D9;
     position: relative;
     overflow: hidden;
 
+    animation: list-pop 0.3s ease-in-out;
 }
 
 #to-do-list li > span, #completed-list li > span{
@@ -107,6 +161,7 @@ main{
 }
 
 /* Pac man effect */
+/* Reference: https://dev.to/alvaromontoro/creating-an-animated-pacman-pattern-40c */
 .pac-man-wrapper{
     position: absolute;
     width: 100%;
@@ -116,16 +171,16 @@ main{
 }
 .pac-man{
 
-    animation: move 1.4s 0.2s ease-out, eating 1.4s 0.2s ease-out;
+    animation: move 1.4s 0.2s cubic-bezier( 0.83, 0, 0.37, 0.99 ), eating 1.4s 0.2s cubic-bezier( 0.83, 0, 0.37, 0.99 );
     position: absolute;
     /* ((text + padding) - hieight of pac man) / 2 */
-    top: calc(50% - 40px / 2);
-    left: calc(-1 * 40px);
+    top: calc(50% - 55px / 2);
+    left: calc(-1 * 55px);
     right: 0;
     bottom: 0;
     
-    width: 40px;
-    height: 40px;
+    width: 55px;
+    height: 55px;
     background: conic-gradient(#D94A3D 55deg, transparent 0 125deg, #D94A3D 0);
     border-radius: 50%;
 
@@ -139,19 +194,23 @@ main{
     left: 50px; */
 }
 
+li:nth-child(even) .pac-man{
+    filter: hue-rotate(180deg);
+}
+
 .pac-man::before{
     content: ' ';
-    animation: chips 1.4s 0.2s ease-out;
+    animation: chips 1.4s 0.2s cubic-bezier( 0.83, 0, 0.37, 0.99 );
 
     display: block;
     position: absolute;
-    right: calc(-1 * 40px);
+    right: calc(-1 * 55px);
     top: 0;
-    width: 40px;
-    height: 40px;
+    width: 55px;
+    height: 55px;
     transform: rotate(45deg);
-    background-image: radial-gradient(#000 30%, transparent 0);
-    background-color: #F2E2DC;
+    background-image: radial-gradient(#8762D9 30%, transparent 0);
+    /* background-color: #F2E2DC; */
     background-size: 10px 10px;
     background-repeat: repeat;
     clip-path: polygon(0 0, 0 100%, 100% 100%, 0% 100%);
@@ -161,10 +220,10 @@ main{
     content: ' ';
     display: block;
     box-sizing: border-box;
-    width: calc(40px * 0.3);
-    height: calc(40px * 0.3);
-    margin-left: calc(40px * 0.16);
-    margin-top: calc(40px * 0.16);
+    width: calc(55px * 0.3);
+    height: calc(55px * 0.3);
+    margin-left: calc(55px * 0.16);
+    margin-top: calc(55px * 0.16);
     border: 3px solid #fff;
     background-color: #000;
     border-radius: 50%;
@@ -172,15 +231,15 @@ main{
 
 .pac-man-bg{
     content: ' ';
-    animation: moveBG 1.4s 0.2s ease-out;
+    animation: moveBG 1.4s 0.2s cubic-bezier( 0.83, 0, 0.37, 0.99 );
 
     position: absolute;
-    top: 1lh;
+    top: 1rem;
     left: 0;
     right: 0;
     bottom: 0;
     width: 0%;
-    height: 40px;
+    height: 55px;
     
     background-color: #F2E2DC;
     /* background-position: 0% 0%; */
@@ -191,6 +250,15 @@ main{
     color: #CAB4D9;
 }
 
+@keyframes list-pop {
+    0%{
+        margin: 0 2rem;
+    }
+    100%{
+        margin: 0 0rem;
+    }
+}
+
 /* @keyframes move{
     100% {
         background-position: calc(100% + 22px) 0%;
@@ -198,46 +266,49 @@ main{
 } */
 
 @keyframes move{
-    0%, 5%{
-        left: calc(0% - 40px);
+
+    0%{
+        left: calc(0% - 55px);
     }
     
-    10%, 25%{
+    25%{
         left: 10%;
     }
 
-    30%, 50%{
+    50%{
         left: 50%;
     }
 
-    55%, 75%{
+    75%{
         left: 75%;
     }
 
-    80%, 100%{
+    100%{
         left: 100%;
     }
+    
 }
 
 @keyframes moveBG{
-    0%, 5%{
-        width: calc(0% + 40px / 2);
+
+    0%{
+        width: calc(0% + 55px / 2);
     }
     
-    10%, 25%{
-        width: calc(10% + 40px / 2);
+    25%{
+        width: calc(15% + 55px / 2);
     }
 
-    30%, 50%{
-        width: calc(50% + 40px / 2);
+    50%{
+        width: calc(55% + 55px / 2);
     }
 
-    55%, 75%{
-        width: calc(75% + 40px / 2);
+    75%{
+        width: calc(80% + 55px / 2);
     }
     
-    80%, 100%{
-        width: calc(100% + 40px / 2);
+    100%{
+        width: calc(100% + 55px / 2);
     }
 }
 
@@ -266,11 +337,15 @@ main{
     :root{
         font-size: 16px;
     }
+    
+    input{
+        text-align: center;
+    }
 
     #to-do-task-wrapper{
         flex-direction: column;
         align-items: stretch;
-        padding: 10vw;
+        padding: 5vw 10vw;
     }
 
     #to-do-list ul, #completed-list ul{

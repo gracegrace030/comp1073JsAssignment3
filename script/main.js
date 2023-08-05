@@ -1,12 +1,19 @@
 // Audio
 const soundEating = document.getElementById("sound-eating");
+const soundAdd = document.getElementById("sound-add");
+const soundDelete = document.getElementById("sound-delete");
 // This causes sound delay:
 // const soundEating = new Audio("./Voicy_Eating_sound_effect.mp3");
 
+const header = document.querySelector("header");
+const main = document.querySelector("main");
 const btnAddItem = document.getElementById("btn-add-item");
+const btnRandomItem = document.getElementById("btn-random-item");
 const inputItem = document.getElementById("input-item");
 const toDoList = document.querySelector("#to-do-list ul");
 const completeList = document.querySelector("#completed-list ul");
+
+const randomFoodList = ["Apple", "Pizza", "Pumpkins", "Chipotle Peppers", "Hazelnuts", "Ketchup"];
 
 btnAddItem.addEventListener("click", newListItem);
 inputItem.addEventListener("keypress",(e)=>{
@@ -16,19 +23,43 @@ inputItem.addEventListener("keypress",(e)=>{
   }
 })
 
+btnRandomItem.addEventListener("click", fillRandomFood);
+
+// Random Food ----------------------------------
+
+function genRandomFood(){
+  const randNum = Math.floor(Math.random() * randomFoodList.length);
+  return randomFoodList[randNum];
+}
+
+function fillRandomFood(){
+  inputItem.value = genRandomFood();
+  inputItem.classList.add("yellow");
+  setTimeout(() => {
+    inputItem.classList.remove("yellow");
+  } , 300);
+}
+
+
 // New List Item Function ----------------------------------
 
 function newListItem(){
   inputValue = inputItem.value;
   if (inputValue !== null && inputValue !== "") {
     
+    header.classList.remove("header-down");
+    main.classList.add("main-height");
+    // Play Sound
+    soundAdd.load();
+    soundAdd.play();
+
     let li = document.createElement("li");
     toDoList.appendChild(li);
 
     let checkbox = document.createElement("input");
     checkbox.setAttribute("type", "checkbox")
     li.appendChild(checkbox);
-    checkbox.addEventListener("click", (e)=>{
+    checkbox.addEventListener("change", (e)=>{
       if (e.target.checked){
         // Replay sound if sound is playing
         soundEating.load();
@@ -40,7 +71,6 @@ function newListItem(){
           li.classList.toggle("strikethrough");
           completeList.appendChild(li);
         },1600);
-
       }
       else {
         li.classList.toggle("strikethrough");
@@ -57,7 +87,18 @@ function newListItem(){
     li.appendChild(btnDelete);
     btnDelete.addEventListener("click", () => {
       if (confirm("Are you sure to delete?")){
+        
         li.parentNode.removeChild(li);
+
+        // Replay sound if sound is playing
+        soundDelete.load();
+        soundDelete.play();
+        
+        // if two lists are empty, initial setup
+        if ((!completeList.hasChildNodes()) && (!toDoList.hasChildNodes())){
+          header.classList.add("header-down");
+          main.classList.remove("main-height");
+        }
       }
     });
 
@@ -65,7 +106,12 @@ function newListItem(){
     inputItem.value = "";
     inputItem.focus();
   }
+  else{
+    // If input field is empty
+    inputItem.focus();
+  }
 }
+
 
 // Pac Man Effect ----------------------------------
 function pacMan(e){

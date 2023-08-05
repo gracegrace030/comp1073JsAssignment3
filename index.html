@@ -9,23 +9,33 @@
     <audio id="sound-eating" preload="auto">
         <source src="./Voicy_Eating_sound_effect.mp3" type="audio/mpeg">
     </audio>
+    <audio id="sound-add" preload="auto">
+        <source src="./pop-39222.mp3" type="audio/mpeg">
+        <!-- Reference: https://pixabay.com/sound-effects/pop-39222/ -->
+    </audio>
+    <audio id="sound-delete" preload="auto">
+        <source src="./water_drop-6707.mp3" type="audio/mpeg">
+        <!-- Reference: https://pixabay.com/sound-effects/water-drop-6707/ -->
+    </audio>
 
     <title>MEAL LIST</title>
 </head>
 <body>
-    <header>
+    <header class="header-down">
+        <div class="subtitle">TO - EAT - LIST</div>
         <h1>WHAT TO EAT</h1>
-    </header>
-    <main>
         <section id="to-do-task-wrapper">
             <label>Enter a food:</label>
             <input type="text" id="input-item">
-            <button type="submit" id="btn-add-item" class="btnSolid">Add</button>
+            <div class="buttons-set">
+                <button type="button" id="btn-random-item" class="btnSolid">&#128523;</button>
+                <button type="submit" id="btn-add-item" class="btnSolid">Add</button>
+            </div>
         </section>
-        
+    </header>
+    <main>
         <section id="to-do-list">
-            <ul>
-            </ul>
+            <ul></ul>
         </section>
         
         <section id="completed-list">
