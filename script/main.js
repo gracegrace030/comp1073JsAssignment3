@@ -34,6 +34,10 @@ function genRandomFood(){
 
 function fillRandomFood(){
   inputItem.value = genRandomFood();
+  inputItem.classList.add("yellow");
+  setTimeout(() => {
+    inputItem.classList.remove("yellow");
+  } , 500);
 }
 
 

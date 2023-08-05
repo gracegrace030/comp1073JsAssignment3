@@ -48,6 +48,12 @@ input{
     font-size: 1rem;
     padding: 0 0.8rem;
     border: 0;
+
+    transition: all 0.3s;
+}
+
+.yellow{
+    color: #F2A413;
 }
 
 button{
@@ -137,6 +143,7 @@ main{
     position: relative;
     overflow: hidden;
 
+    animation: list-pop 0.3s ease-in-out;
 }
 
 #to-do-list li > span, #completed-list li > span{
@@ -167,13 +174,13 @@ main{
     animation: move 1.4s 0.2s cubic-bezier( 0.83, 0, 0.37, 0.99 ), eating 1.4s 0.2s cubic-bezier( 0.83, 0, 0.37, 0.99 );
     position: absolute;
     /* ((text + padding) - hieight of pac man) / 2 */
-    top: calc(50% - 40px / 2);
-    left: calc(-1 * 40px);
+    top: calc(50% - var(--pacman-size) / 2);
+    left: calc(-1 * var(--pacman-size));
     right: 0;
     bottom: 0;
     
-    width: 40px;
-    height: 40px;
+    width: var(--pacman-size);
+    height: var(--pacman-size);
     background: conic-gradient(#D94A3D 55deg, transparent 0 125deg, #D94A3D 0);
     border-radius: 50%;
 
@@ -193,10 +200,10 @@ main{
 
     display: block;
     position: absolute;
-    right: calc(-1 * 40px);
+    right: calc(-1 * var(--pacman-size));
     top: 0;
-    width: 40px;
-    height: 40px;
+    width: var(--pacman-size);
+    height: var(--pacman-size);
     transform: rotate(45deg);
     background-image: radial-gradient(#000 30%, transparent 0);
     background-color: #F2E2DC;
@@ -209,10 +216,10 @@ main{
     content: ' ';
     display: block;
     box-sizing: border-box;
-    width: calc(40px * 0.3);
-    height: calc(40px * 0.3);
-    margin-left: calc(40px * 0.16);
-    margin-top: calc(40px * 0.16);
+    width: calc(var(--pacman-size) * 0.3);
+    height: calc(var(--pacman-size) * 0.3);
+    margin-left: calc(var(--pacman-size) * 0.16);
+    margin-top: calc(var(--pacman-size) * 0.16);
     border: 3px solid #fff;
     background-color: #000;
     border-radius: 50%;
@@ -228,7 +235,7 @@ main{
     right: 0;
     bottom: 0;
     width: 0%;
-    height: 40px;
+    height: var(--pacman-size);
     
     background-color: #F2E2DC;
     /* background-position: 0% 0%; */
@@ -239,6 +246,15 @@ main{
     color: #CAB4D9;
 }
 
+@keyframes list-pop {
+    0%{
+        margin: 0 2rem;
+    }
+    100%{
+        margin: 0 0rem;
+    }
+}
+
 /* @keyframes move{
     100% {
         background-position: calc(100% + 22px) 0%;
@@ -247,7 +263,7 @@ main{
 
 @keyframes move{
     /* 0%, 5%{
-        left: calc(0% - 40px);
+        left: calc(0% - var(--pacman-size));
     }
     
     10%, 25%{
@@ -267,7 +283,7 @@ main{
     } */
 
     0%{
-        left: calc(0% - 40px);
+        left: calc(0% - var(--pacman-size));
     }
     
     25%{
@@ -290,43 +306,43 @@ main{
 
 @keyframes moveBG{
     /* 0%, 5%{
-        width: calc(0% + 40px / 2);
+        width: calc(0% + var(--pacman-size) / 2);
     }
     
     10%, 25%{
-        width: calc(10% + 40px / 2);
+        width: calc(10% + var(--pacman-size) / 2);
     }
 
     30%, 50%{
-        width: calc(50% + 40px / 2);
+        width: calc(50% + var(--pacman-size) / 2);
     }
 
     55%, 75%{
-        width: calc(75% + 40px / 2);
+        width: calc(75% + var(--pacman-size) / 2);
     }
     
     80%, 100%{
-        width: calc(100% + 40px / 2);
+        width: calc(100% + var(--pacman-size) / 2);
     } */
 
     0%{
-        width: calc(0% + 40px / 2);
+        width: calc(0% + var(--pacman-size) / 2);
     }
     
     25%{
-        width: calc(10% + 40px / 2);
+        width: calc(10% + var(--pacman-size) / 2);
     }
 
     50%{
-        width: calc(50% + 40px / 2);
+        width: calc(50% + var(--pacman-size) / 2);
     }
 
     75%{
-        width: calc(75% + 40px / 2);
+        width: calc(75% + var(--pacman-size) / 2);
     }
     
     100%{
-        width: calc(100% + 40px / 2);
+        width: calc(100% + var(--pacman-size) / 2);
     }
 }
 
