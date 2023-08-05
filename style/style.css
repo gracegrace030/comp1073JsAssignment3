@@ -3,7 +3,7 @@
 
 :root{
     font-size: 18px;
-    --pacman-size : 40px;
+    --pacman-size : 55px;
 }
 
 body, input{
@@ -174,13 +174,13 @@ main{
     animation: move 1.4s 0.2s cubic-bezier( 0.83, 0, 0.37, 0.99 ), eating 1.4s 0.2s cubic-bezier( 0.83, 0, 0.37, 0.99 );
     position: absolute;
     /* ((text + padding) - hieight of pac man) / 2 */
-    top: calc(50% - var(--pacman-size) / 2);
-    left: calc(-1 * var(--pacman-size));
+    top: calc(50% - 55px / 2);
+    left: calc(-1 * 55px);
     right: 0;
     bottom: 0;
     
-    width: var(--pacman-size);
-    height: var(--pacman-size);
+    width: 55px;
+    height: 55px;
     background: conic-gradient(#D94A3D 55deg, transparent 0 125deg, #D94A3D 0);
     border-radius: 50%;
 
@@ -194,19 +194,23 @@ main{
     left: 50px; */
 }
 
+li:nth-child(even) .pac-man{
+    filter: hue-rotate(180deg);
+}
+
 .pac-man::before{
     content: ' ';
     animation: chips 1.4s 0.2s cubic-bezier( 0.83, 0, 0.37, 0.99 );
 
     display: block;
     position: absolute;
-    right: calc(-1 * var(--pacman-size));
+    right: calc(-1 * 55px);
     top: 0;
-    width: var(--pacman-size);
-    height: var(--pacman-size);
+    width: 55px;
+    height: 55px;
     transform: rotate(45deg);
-    background-image: radial-gradient(#000 30%, transparent 0);
-    background-color: #F2E2DC;
+    background-image: radial-gradient(#8762D9 30%, transparent 0);
+    /* background-color: #F2E2DC; */
     background-size: 10px 10px;
     background-repeat: repeat;
     clip-path: polygon(0 0, 0 100%, 100% 100%, 0% 100%);
@@ -216,10 +220,10 @@ main{
     content: ' ';
     display: block;
     box-sizing: border-box;
-    width: calc(var(--pacman-size) * 0.3);
-    height: calc(var(--pacman-size) * 0.3);
-    margin-left: calc(var(--pacman-size) * 0.16);
-    margin-top: calc(var(--pacman-size) * 0.16);
+    width: calc(55px * 0.3);
+    height: calc(55px * 0.3);
+    margin-left: calc(55px * 0.16);
+    margin-top: calc(55px * 0.16);
     border: 3px solid #fff;
     background-color: #000;
     border-radius: 50%;
@@ -235,7 +239,7 @@ main{
     right: 0;
     bottom: 0;
     width: 0%;
-    height: var(--pacman-size);
+    height: 55px;
     
     background-color: #F2E2DC;
     /* background-position: 0% 0%; */
@@ -262,28 +266,9 @@ main{
 } */
 
 @keyframes move{
-    /* 0%, 5%{
-        left: calc(0% - var(--pacman-size));
-    }
-    
-    10%, 25%{
-        left: 10%;
-    }
-
-    30%, 50%{
-        left: 50%;
-    }
-
-    55%, 75%{
-        left: 75%;
-    }
-
-    80%, 100%{
-        left: 100%;
-    } */
 
     0%{
-        left: calc(0% - var(--pacman-size));
+        left: calc(0% - 55px);
     }
     
     25%{
@@ -305,44 +290,25 @@ main{
 }
 
 @keyframes moveBG{
-    /* 0%, 5%{
-        width: calc(0% + var(--pacman-size) / 2);
-    }
-    
-    10%, 25%{
-        width: calc(10% + var(--pacman-size) / 2);
-    }
-
-    30%, 50%{
-        width: calc(50% + var(--pacman-size) / 2);
-    }
-
-    55%, 75%{
-        width: calc(75% + var(--pacman-size) / 2);
-    }
-    
-    80%, 100%{
-        width: calc(100% + var(--pacman-size) / 2);
-    } */
 
     0%{
-        width: calc(0% + var(--pacman-size) / 2);
+        width: calc(0% + 55px / 2);
     }
     
     25%{
-        width: calc(10% + var(--pacman-size) / 2);
+        width: calc(15% + 55px / 2);
     }
 
     50%{
-        width: calc(50% + var(--pacman-size) / 2);
+        width: calc(55% + 55px / 2);
     }
 
     75%{
-        width: calc(75% + var(--pacman-size) / 2);
+        width: calc(80% + 55px / 2);
     }
     
     100%{
-        width: calc(100% + var(--pacman-size) / 2);
+        width: calc(100% + 55px / 2);
     }
 }
 

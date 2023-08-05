@@ -37,7 +37,7 @@ function fillRandomFood(){
   inputItem.classList.add("yellow");
   setTimeout(() => {
     inputItem.classList.remove("yellow");
-  } , 500);
+  } , 300);
 }
 
 
