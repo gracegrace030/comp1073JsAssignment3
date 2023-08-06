@@ -17,7 +17,7 @@ body, button{
 }
 
 h1, .subtitle, button{
-    font-family: 'Bungee', cursive; 
+    font-family: 'Bungee', monospace; 
 }
 
 h1{
@@ -44,7 +44,7 @@ header h1{
 }
 
 input{
-    height: calc(1.5rem + 1rem);
+    height: calc(1.1rem + 2rem);
     font-size: 1rem;
     padding: 0 0.8rem;
     border: 0;
@@ -62,6 +62,7 @@ button{
     background-color: transparent;
     border: 0;
 
+    font-size: 0.8rem;
     text-decoration: none;
     transition: all 0.3s;
 }
@@ -73,8 +74,8 @@ input[type="checkbox"]{
     font: inherit;
     color: currentColor;
     width: 1.15rem;
-    outline: none;
-    /* border: 3px solid currentColor; */
+    outline: none; 
+    cursor: pointer;
     border-radius: 0.15rem;
     transform: translateY(-0.075rem);
 }
@@ -174,13 +175,13 @@ main{
     animation: move 1.4s 0.2s cubic-bezier( 0.83, 0, 0.37, 0.99 ), eating 1.4s 0.2s cubic-bezier( 0.83, 0, 0.37, 0.99 );
     position: absolute;
     /* ((text + padding) - hieight of pac man) / 2 */
-    top: calc(50% - 55px / 2);
-    left: calc(-1 * 55px);
+    top: calc(50% - var(--pacman-size) / 2);
+    left: calc(-1 * var(--pacman-size));
     right: 0;
     bottom: 0;
     
-    width: 55px;
-    height: 55px;
+    width: var(--pacman-size);
+    height: var(--pacman-size);
     background: conic-gradient(#D94A3D 55deg, transparent 0 125deg, #D94A3D 0);
     border-radius: 50%;
 
@@ -204,10 +205,10 @@ li:nth-child(even) .pac-man{
 
     display: block;
     position: absolute;
-    right: calc(-1 * 55px);
+    right: calc(-1 * var(--pacman-size));
     top: 0;
-    width: 55px;
-    height: 55px;
+    width: var(--pacman-size);
+    height: var(--pacman-size);
     transform: rotate(45deg);
     background-image: radial-gradient(#8762D9 30%, transparent 0);
     /* background-color: #F2E2DC; */
@@ -220,10 +221,10 @@ li:nth-child(even) .pac-man{
     content: ' ';
     display: block;
     box-sizing: border-box;
-    width: calc(55px * 0.3);
-    height: calc(55px * 0.3);
-    margin-left: calc(55px * 0.16);
-    margin-top: calc(55px * 0.16);
+    width: calc(var(--pacman-size) * 0.3);
+    height: calc(var(--pacman-size) * 0.3);
+    margin-left: calc(var(--pacman-size) * 0.16);
+    margin-top: calc(var(--pacman-size) * 0.16);
     border: 3px solid #fff;
     background-color: #000;
     border-radius: 50%;
@@ -239,7 +240,7 @@ li:nth-child(even) .pac-man{
     right: 0;
     bottom: 0;
     width: 0%;
-    height: 55px;
+    height: var(--pacman-size);
     
     background-color: #F2E2DC;
     /* background-position: 0% 0%; */
@@ -248,6 +249,35 @@ li:nth-child(even) .pac-man{
 .strikethrough{
     text-decoration: line-through;
     color: #CAB4D9;
+}
+
+footer{
+    position: absolute;
+    bottom: 0;
+    
+    display: grid;
+    grid-template-columns: 1rem auto 1rem;
+    justify-content: center;
+    align-items: center;
+    
+    width: 100%;
+    color: #CAB4D9;
+    font-size: 0.9rem;
+    padding: 0 1.5rem;
+    box-sizing: border-box;
+    background-color: #fff0ea;
+
+    transition: all 0.3s;
+    transform-origin: bottom;
+    transform: scaleY(0);
+}
+
+footer span{
+    display: inline-block;
+}
+
+.footer-up{
+    transform: scaleY(1);
 }
 
 @keyframes list-pop {
@@ -268,7 +298,7 @@ li:nth-child(even) .pac-man{
 @keyframes move{
 
     0%{
-        left: calc(0% - 55px);
+        left: calc(0% - var(--pacman-size));
     }
     
     25%{
@@ -292,23 +322,23 @@ li:nth-child(even) .pac-man{
 @keyframes moveBG{
 
     0%{
-        width: calc(0% + 55px / 2);
+        width: calc(0% + var(--pacman-size) / 2);
     }
     
     25%{
-        width: calc(15% + 55px / 2);
+        width: calc(15% + var(--pacman-size) / 2);
     }
 
     50%{
-        width: calc(55% + 55px / 2);
+        width: calc(55% + var(--pacman-size) / 2);
     }
 
     75%{
-        width: calc(80% + 55px / 2);
+        width: calc(80% + var(--pacman-size) / 2);
     }
     
     100%{
-        width: calc(100% + 55px / 2);
+        width: calc(100% + var(--pacman-size) / 2);
     }
 }
 

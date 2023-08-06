@@ -7,6 +7,7 @@ const soundDelete = document.getElementById("sound-delete");
 
 const header = document.querySelector("header");
 const main = document.querySelector("main");
+const footer = document.querySelector("footer");
 const btnAddItem = document.getElementById("btn-add-item");
 const btnRandomItem = document.getElementById("btn-random-item");
 const inputItem = document.getElementById("input-item");
@@ -48,6 +49,7 @@ function newListItem(){
   if (inputValue !== null && inputValue !== "") {
     
     header.classList.remove("header-down");
+    footer.classList.remove("footer-up");
     main.classList.add("main-height");
     // Play Sound
     soundAdd.load();
@@ -97,6 +99,7 @@ function newListItem(){
         // if two lists are empty, initial setup
         if ((!completeList.hasChildNodes()) && (!toDoList.hasChildNodes())){
           header.classList.add("header-down");
+          footer.classList.add("footer-up");
           main.classList.remove("main-height");
         }
       }
